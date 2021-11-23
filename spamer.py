@@ -1,8 +1,15 @@
+#!/bin/python3
+
 import socket
 import random as rnd
 import time
-IP_ADDR = '127.0.0.1'
-TCP_PORT=[50001]
+import argparse
+pars = argparse.ArgumentParser("This is small test utility for testin TCP\IP to Serial converters.")
+pars.add_argument("--addr", type=str,  required=True,  help='IP address of converter.')
+pars.add_argument('--port', type=int, required=True, nargs='+',  help='One or more TCP ports for testing. (If you want to test multiport IP to Serial adapter.)')
+args =pars.parse_args()
+IP_ADDR = args.addr
+TCP_PORT=args.port
 #IP_ADDR = os.environ('IP_ADDR')
 #TCP_PORT = os.envirion('TCP_PORT')
 
